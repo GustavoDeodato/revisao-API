@@ -18,3 +18,18 @@ app.use((request, response, next)=>{
 
     next()
 })
+
+const controllerUsuarios = require('./controller/controllerUsuarios')
+
+app.post('v1/lionbook/usuario', cors(), bodyParserJSON, async function (request, response) {
+
+    let contentType = request.headers['content-type']
+    let dados = request.body
+
+    let result = await controllerUsuarios.inserirUsuario(dados, contentType)
+
+    response.status(result.status_code)
+    result.json(result)
+    
+})
+
