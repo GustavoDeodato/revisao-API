@@ -5,19 +5,11 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client"
+  provider = "prisma-client-js"
   output   = "../generated/prisma"
 }
 
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
-}
-
-model tbl_usuario {
-  id     Int     @id @default(autoincrement())
-  nome   String
-  email  String   @unique
-  senha  String
-  @@map("tbl_usuario")
 }
